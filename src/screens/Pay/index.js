@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Switch, TextInput, ScrollView, Button } from 'react-native'
 import {
   Feather
 } from '@expo/vector-icons'
-
+import api from '../../services/api'
 import {
   Wrapper,
   Container,
@@ -28,6 +28,41 @@ import {
 } from './styles'
 
 export default function WalletScreen () {
+  const [data, setData] = useState({
+    nome: '',
+    cpf: '',
+    data_nascimento: '',
+    mae: '',
+    email: '',
+    senha: '',
+    telefone: '',
+    cep: '',
+    logradouro: '',
+    numero: '',
+    cidade: '',
+    estado: '',
+    matricula: '',
+    id_proposta: '',
+    fase_proposta: '',
+    pendencia: '',
+    situacao: '',
+    protocolo: '',
+    instituicao: '',
+    convenio: '',
+    servico: '',
+    valor_liberado: '',
+    valor_parcela: '',
+    quantidade_parcela: '',
+    data_venda: '',
+    responsavel_cancelame: ''
+  })
+
+  useEffect(() => {
+    api.get().then(response => {
+      setData(response.data.result)
+      console.log(data.cep)
+    })
+  }, [])
   const [isVisible, setIsVisible] = useState(true)
   const [useBalance, setUseBalance] = useState(false)
 
@@ -75,22 +110,22 @@ export default function WalletScreen () {
                 <Card>
                   <CardBody>
                     <CardDetails>
-                      <CardTitle>Valor: 122,500.23</CardTitle>
+                      <CardTitle>Valor: {data.valor_liberado}</CardTitle>
                       <CardInfo>
-                      Parcelas: 12x
-                    </CardInfo>
+                      Parcelas: {data.quantidade_parcela}
+                      </CardInfo>
                       <CardInfo>
                       Juros: 3.4% A.M
-                    </CardInfo>
+                      </CardInfo>
                       <CardInfo>
-                      Data de Contratação: 12/05/2020
-                    </CardInfo>
+                      Data de Contratação: {data.data_venda}
+                      </CardInfo>
                       <CardInfo>
-                      Previsão da Finalização: 12/05/2021
-                    </CardInfo>
+                      Valor da Parcela: {data.valor_parcela}
+                      </CardInfo>
                       <CardInfo>
-                      Status: Aprovado
-                    </CardInfo>
+                      Status: {data.situacao}
+                      </CardInfo>
                     </CardDetails>
                   </CardBody>
                 </Card>

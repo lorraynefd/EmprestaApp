@@ -10,25 +10,25 @@ const items = [
   {
     key: String(Math.random()),
     img: img001,
-    title: 'Pague suas contas sem sair de casa',
+    title: 'Menor taxa do mercado com segurança e conforto',
     bgColor: '#F87C43'
   },
   {
     key: String(Math.random()),
     img: img002,
-    title: 'Pague suas contas sem sair de casa',
+    title: '100% Seguro',
     bgColor: '#F88F43'
   },
   {
     key: String(Math.random()),
     img: img003,
-    title: 'Pague suas contas sem sair de casa',
+    title: 'Rápido e Digital',
     bgColor: '#F88F43'
   },
   {
     key: String(Math.random()),
     img: img001,
-    title: 'Pague suas contas sem sair de casa',
+    title: 'Zero burocracia',
     bgColor: '#F88F26'
   },
   {
